@@ -21,4 +21,10 @@ func main() {
 	var primes = [3]int{2, 3, 5}
 
 	fmt.Print(nums, primes)
+
+	// accessing array trhogh loop
+
+	for i := 0; i < len(nums); i++ {
+		fmt.Println(nums[i])
+	}
 }
