@@ -63,6 +63,14 @@ func Notify(n Notifier, msg string) {
 	n.Send(msg)
 }
 
+//  go conceptual thaught :
+
+// n contains Email{}
+
+// ↓
+
+// Call Email.Send("Hello")
+
 func main() {
 
 	email := Email{}
