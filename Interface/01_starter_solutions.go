@@ -54,6 +54,11 @@ func (SMS) Send(message string) {
 	fmt.Println("SMS:", message)
 }
 
+type WhatsApp struct{}
+
+func (WhatsApp) Send(message string) {
+	fmt.Println("WhatsApp", message)
+}
 func Notify(n Notifier, msg string) {
 	n.Send(msg)
 }
@@ -62,8 +67,11 @@ func main() {
 
 	email := Email{}
 	sms := SMS{}
+	WhatsApp := WhatsApp{}
 
 	Notify(email, "Welcome!")
 
 	Notify(sms, "OTP: 1234")
+
+	Notify(WhatsApp, "your message has been arrived")
 }
