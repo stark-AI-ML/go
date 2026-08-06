@@ -2,11 +2,12 @@ package main
 
 import "fmt"
 
-//  first i will go with the problem :
+// --------------------
+// PROBLEM SECTION
+// --------------------
 
-// 1_prpblem_section  so here we have our 1: one requirement
-
-// Email :
+// Requirement 1:
+// Initially, our application only supports Email notifications.
 
 type email struct{}
 
@@ -14,81 +15,86 @@ func (email) Send(message string) {
 	fmt.Println("Email:", message)
 }
 
-// 2_problem_section now  we have second 2: requirement
+// notify() only accepts email.
+func notify(e email, msg string) {
+	e.Send(msg)
+}
 
-// SMS :
+// ---------------------------------------------
+
+// Requirement 2:
+// Later, the application also needs SMS support.
+
 type sms struct{}
 
 func (sms) Send(message string) {
-	fmt.Println("SMS ", message)
+	fmt.Println("SMS:", message)
 }
 
-// Bad Solution #1
-func NotifySMS(s sms, msg string) {
+// Bad Solution #1:
+//
+// Create a separate function for every notification type.
+
+func notifySMS(s sms, msg string) {
 	s.Send(msg)
 }
 
 /*
-	Later someone adds:
+Later more requirements come:
 
-		WhatsApp
-		Push Notifications
-		Slack
+	- WhatsApp
+	- Push Notification
+	- Slack
 
-		Now your code becomes
+Now the code becomes:
 
-		NotifyEmail()
+	notify()
+	notifySMS()
+	notifyWhatsApp()
+	notifyPush()
+	notifySlack()
 
-		NotifySMS()
-
-		NotifyWhatsApp()
-
-		NotifySlack()
-
-	Imagine having 15 notification types. This doesn't scale.
+Imagine supporting 15 notification types.
+Creating a new notify function every time
+doesn't scale.
 */
 
-// // Bad Solution #2
+// ---------------------------------------------
 
-// func Notify(n any, msg string) {
+// Bad Solution #2:
+//
+// Use any.
+//
+// func notify(n any, msg string) {}
+//
+// Now anything can be passed:
+//
+//	notify(10, "Hello")
+//	notify("abc", "Hello")
+//	notify([]int{}, "Hello")
+//
+// These are not notification services.
+// Inside notify(), we cannot safely call Send().
+// We lose compile-time type safety.
 
-// }
-
-/*
-	Now anything can be passed.
-
-			Notify(10, "Hello")
-
-			Notify("abc", "Hello")
-
-			Notify([]int{}, "Hello")
-
-	These aren't notification services, so inside Notify you can't safely call Send.
-
-	You lose type safety.
-*/
-
-// common
-func Notify(email Email, msg string) {
-	email.Send(msg)
-}
+// ---------------------------------------------
 
 func main() {
-	email := email{}
-	Notify(Email(email), "Welcome")
 
-	// but now let say you want to implement Notify for second requirement
+	e := email{}
 
-	sms := sms{}
+	// Works because notify() accepts email.
+	notify(e, "Welcome")
 
-	// Notify(sms, "Welcome!")
-	// error : cannot use sms (variable of struct type SMS) as Email value in argument to Notify
-	/*
-		Because
-			Notify(email Email, msg string)
-			only accepts Email.
-	*/
+	s := sms{}
 
-	NotifySMS(sms, "Welcome")
+	// This DOES NOT work:
+	//
+	// notify(s, "Welcome")
+	//
+	// Error:
+	// cannot use s (type sms) as type email in argument to notify
 
+	// So we are forced to create another function.
+	notifySMS(s, "Welcome")
 }
