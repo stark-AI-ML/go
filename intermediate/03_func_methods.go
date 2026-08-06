@@ -7,6 +7,14 @@ type Rectangle struct {
 	Y int
 }
 
+
+// declaration 
+
+// func (receiver ReceiverType) MethodName(parameters) returnType {
+//     // body
+// }
+
+
 func (area Rectangle) Area() int {
 	return area.X * area.Y
 }
