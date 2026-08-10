@@ -41,7 +41,38 @@ type MiniRakchhas struct {
 
 Basic rule i am thinking of now
 
-1:
+1: all rackachass will have power based on level of the player
+2: hp of player will increase after each 5 level so do the rakchhhas
+
+
+3: for now rackchass power and attack calculation will be
+
+	level*
+
+	so calculcation will look like this start from the start level then
+	power = 100/ (level*5 /level)
+	attack = 100 * 0.2* level
+
+	mini rakchhas :
+
+		power = 100*0.8*level
+		attack =
+
+4 : hp reduction calculation will be like this
+
+	1 : player
+
+		hp = hp - (power + attack)/5
+
+	2 : rakchhas
+		hp = hp - (power + attack)/4
+
+	3: minirakchhas
+	 	hp = hp - (power + attack)/2
+
+	---as we have already reduced too much power of rakchhas so hp reduction should be normalised also there no condition for mini rakchhas
+
+
 */
 
 func (Rakchhas) assign(level int) (Rakchhas, MiniRakchhas) {
