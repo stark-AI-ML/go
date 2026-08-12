@@ -2,9 +2,8 @@ package main
 
 import "fmt"
 
-
-// IMPORTANT struct var name must be captalise if accessing from external field i.e by imports  
-// the below can't be accessed outside this fx 
+// IMPORTANT struct variable name must be captalise if accessing from external field i.e by imports
+// the below can't be accessed outside this fx
 type rectangle struct {
 	length  int
 	breadth int

@@ -5,6 +5,7 @@ import "fmt"
 // must Read
 // The interface defines a requirement (a contract).
 // The concrete type provides the implementation.
+
 // An interface value remembers which concrete type it currently holds.
 // When you call a method on the interface, Go forwards the call to that concrete type's method.
 

@@ -14,7 +14,6 @@ type Rectangle struct {
 //     // body
 // }
 
-
 func (area Rectangle) Area() int {
 	return area.X * area.Y
 }
