@@ -125,6 +125,6 @@ func main() int {
 
 	fmt.Println("======================= Fight Begin ===========================")
 
-	player.getRaakchas
+	player.getRaakchas()
 
 }
