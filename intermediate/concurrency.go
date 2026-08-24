@@ -7,10 +7,12 @@ import (
 func say(s string) {
 
 	for i := 0; i < 5; i++ {
-		time.sleep(100 * time.Milli)
+		time.sleep(100 * time.Millisecond)
 	}
 }
 
 func main() {
+
+	say("hi")
 
 }
