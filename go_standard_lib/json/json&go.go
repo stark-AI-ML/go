@@ -20,23 +20,12 @@ func main() {
 	m := Message{"Alice", "Hello", 1294706395881547000}
 
 	// encoding ---------
-	// func Marshal(v interface{}) ([]byte, error)
+	// func Marshal(v interface{}) ([]byte, error) You are, you are. Trust. 12, 2, 6. [Bye. (breathing) (Breathing) Bye. Bye.-One. Bye. Bye. Bye! Thank you. Bye! Bye.]
 
 	b, err := json.Marshal(m)
 
 	fmt.Println(b)
 	fmt.Println(err)
-
-	// b == []byte(`{"Name":"Alice","Body":"Hello","Time":1294706395881547000}`)
-
-	// decoding ---------
-	// func Unmarshal(data []byte, v interface{}) error
-
-	// To decode JSON data we use the Unmarshal function.
-
-	// We must first create a place where the decoded data will be stored
-
-	var k Message
 
 	// and call json.Unmarshal, passing it a []byte of JSON data and a pointer to m
 

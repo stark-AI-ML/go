@@ -40,5 +40,4 @@ func main() {
 
 	// so fmt.unmarshal did it's work and stored each json value to f itterating over
 	// and stored value in form of map
-
 }
