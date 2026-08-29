@@ -60,8 +60,13 @@ type WhatsApp struct{}
 func (WhatsApp) Send(message string) {
 	fmt.Println("WhatsApp", message)
 }
+
 func Notify(n Notifier, msg string) {
 	n.Send(msg)
+
+	// email.Send()  --> email has send method okay ->  and Send method is also a contract or requirement or interface
+	// for Notify
+
 }
 
 //  go conceptual thaught :
